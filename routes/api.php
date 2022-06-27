@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AlunosController;
+use App\Http\Controllers\EducadoraController;
 use App\Http\Controllers\MarcacaoController;
 use App\Http\Controllers\MarcacaoAlunoController;
 
@@ -31,6 +32,11 @@ Route::get('getmarcacao', [MarcacaoAlunoController::class ,'index']);
 Route::get('getmark/{id}', [MarcacaoAlunoController::class ,'getMark']);
 Route::get('getnaomarcado/{tipo_marcacao}', [MarcacaoAlunoController::class ,'getNaoMarcado']);
 
+
+//Rota da educadora
+Route::post('register', [EducadoraController::class, 'register']);
+Route::post('/login', [EducadoraController::class, 'login']);
+Route::get('carrinha/{id}',[EducadoraController::class,'getCarrinha']);
 Route::middleware('prefix:/api','auth:sanctum')->get('/user', function (Request $request) {
     
     return $request->user();
